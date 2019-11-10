@@ -6,22 +6,23 @@ import {
   StyleSheet,
   AsyncStorage
 } from "react-native";
-import { withLayout } from "../../Components/withLayout";
 import ThemeContext from "../../Contexts/ThemeContext";
 import AuthContext from "../../Contexts/AuthContext";
-// import {} from "react-native-elements";
-// import {} from "react-native-vector-icons";
 
 const SplashScreen = ({ navigation }) => {
   const { PrimaryColor } = useContext(ThemeContext);
   const { checkLogin } = useContext(AuthContext);
 
   useEffect(() => {
-    setTimeout(async () => {
-      let result = await checkLogin();
-      navigation.navigate("Login");
+    setTimeout(() => {
+      const { user } = navigation.getScreenProps();
+      if (user) {
+        navigation.navigate("Main");
+      } else {
+        navigation.navigate("Auth");
+      }
     }, 100);
-  });
+  }, []);
 
   return (
     <View style={viewStyle.main}>

@@ -6,7 +6,9 @@ import { AuthContextProvider } from "./Contexts/AuthContext";
 export default () => {
   return (
     <AuthContextProvider>
-      <AppRoute />
+      {({ authenticated, user }) => {
+        return <AppRoute screenProps={{ authenticated, user }} />;
+      }}
     </AuthContextProvider>
   );
 };

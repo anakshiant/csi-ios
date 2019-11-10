@@ -1,9 +1,17 @@
 import React, { useContext } from "react";
-import { View, Text, StatusBar, StyleSheet } from "react-native";
-import ThemeContext from "../Contexts/ThemeContext";
+import { View, Text, StatusBar, StyleSheet, Dimensions } from "react-native";
+import { withNavigation } from "react-navigation";
 
-export const AppLayout = ({ children }) => {
-  const { PrimaryColor } = useContext(ThemeContext);
+import ThemeContext from "../Contexts/ThemeContext";
+import AuthContext from "../Contexts/AuthContext";
+
+const AppLayout = ({ children }) => {
+  const { PrimaryColor, SuccessColor, DangerColor, InfoColor } = useContext(
+    ThemeContext
+  );
+
+  const { user, getToken, authenticated } = useContext(AuthContext);
+
   return (
     <View style={viewStyle.main}>
       <StatusBar
@@ -16,10 +24,13 @@ export const AppLayout = ({ children }) => {
   );
 };
 
+export default withNavigation(AppLayout);
+
 const viewStyle = StyleSheet.create({
   main: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "flex-start",
+    alignItems: "stretch"
   }
 });

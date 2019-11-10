@@ -1,46 +1,64 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, StyleSheet, Image, TextInput } from "react-native";
 import { Input, Button, ThemeConsumer } from "react-native-elements";
 
-
 import { withLayout } from "../../Components/withLayout";
-import AuthContext from "../../Contexts/AuthContext";
-import ThemeContext from "../../Contexts/ThemeContext";
+import LoginContainer from "../../Containers/Login";
 
-export const Login = ({navigation}) => {
-  const {PrimaryColor} = useContext(ThemeContext);
-  const {Login} = useContext(AuthContext);
-
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("")
-
+export const Login = ({ navigation }) => {
   return (
-    <View style={styles.main}>
-      <View style={styles.imageView}>
-        <Image source={require("../../assets/icon.png")} />
-      </View>
-      <View style={styles.loginSection}>
-        <TextInput placeholder="Email" style={styles.textInput} onChange={e=>setEmail(e.text)} />
-        <TextInput placeholder="Password" style={styles.textInput} onChange={e=>setPassword(e.text)} />
-        <Button title="Login" type="solid" raised={true} onPress={}/>
-      </View>
-      <View style={styles.signupView}>
-        <Text style={{ fontWeight: "bold" }} onPress={}>
-          New Here? Click here to Register
-        </Text>
-      </View>
-    </View>
+    <React.Fragment>
+      <LoginContainer action={() => navigation.navigate("Main")}>
+        {({ email, setEmail, password, setPassword, login }) => (
+          <View style={styles.main}>
+            <View style={styles.loginSection}>
+              <View style={styles.imageView}>
+                <Image source={require("../../assets/icon.png")} />
+              </View>
+              <TextInput
+                placeholder="Email"
+                style={styles.textInput}
+                value={email}
+                onChangeText={setEmail}
+              />
+              <TextInput
+                placeholder="Password"
+                style={styles.textInput}
+                value={password}
+                onChangeText={setPassword}
+                textContentType={"password"}
+              />
+              <Button
+                title="Login"
+                type="solid"
+                raised={true}
+                onPress={login}
+              />
+              <Button title="Forgot Password?" type="clear" raised={false} />
+            </View>
+            <View style={styles.signupView}>
+              <Button
+                title="New Here? Click here to Register"
+                type="clear"
+                raised={false}
+              />
+            </View>
+          </View>
+        )}
+      </LoginContainer>
+    </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "space-evenly",
+    alignItems: "center",
   },
   imageView: {
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center"
   },
   loginSection: {
     justifyContent: "center",
@@ -52,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   signupView: {
-    justifyContent: "center"
+    justifyContent: "space-evenly"
   }
 });
 

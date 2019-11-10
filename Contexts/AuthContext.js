@@ -4,8 +4,9 @@ import { loginService } from "../services/account";
 
 const AuthContext = createContext({
   authenticated: false,
-  userId: 0,
-  profile: null
+  setToken: () => {},
+  getToken: () => {},
+  user: null
 });
 
 export default AuthContext;
@@ -15,46 +16,53 @@ export const AuthContextConsumer = AuthContext.Consumer;
 export const AuthContextProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [userId, setUserId] = useState(0);
-  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const login = async (username, password) => {
-    try {
-      const response = await loginService(username, password);
-      if (response.status === true) {
+  useEffect(() => {
+    (async () => {
+      try {
+        const token = await AsyncStorage.getItem("user");
+        let user = JSON.parse(token);
         setAuthenticated(true);
-        setUserId(response.data.id);
-        setProfile(response.data);
-        await AsyncStorage.setItem("user", { authenticated, userId, profile });
+        setUserId(user.userId);
+        setUser(user.profile);
+      } catch (err) {
+        //ignore
       }
-    } catch (error) {}
+    })();
+  }, []);
+
+  const getToken = async () => {
+    try {
+      const token = await AsyncStorage.getItem("user");
+      return JSON.parse(token);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const checkLogin = async () => {
-    return new Promise((resolve, reject) => {
-      AsyncStorage.getItem("user", (err, res) => {
-        if (err) reject(false);
-        if (res) {
-          setAuthenticated(res.authenticated);
-          setUserId(res.userId);
-          setProfile(res.profile);
-          resolve(true);
-        }
-        resolve(false);
-      });
-    });
+  const setToken = async user => {
+    try {
+      const token = JSON.stringify({ userId: user.id, profile: user });
+      await AsyncStorage.setItem("user", token);
+      setUserId(user.id);
+      setAuthenticated(true);
+      setUser(user);
+    } catch (err) {
+      //ifnore
+    }
   };
 
   return (
     <AuthContext.Provider
       value={{
-        authenticated: authenticated,
-        userId: userId,
-        profile: profile,
-        login: login,
-        checkLogin: checkLogin
+        setToken,
+        getToken,
+        user,
+        authenticated
       }}
     >
-      {children}
+      {children({ user, authenticated })}
     </AuthContext.Provider>
   );
 };
