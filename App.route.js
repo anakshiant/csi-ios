@@ -9,11 +9,13 @@ import { StyleSheet } from "react-native";
 
 import { Splash } from "./Screens/Splash/Index";
 import Login from "./Screens/Account/Login";
+import SignUp from "./Screens/Account/SingnUp";
 import Profile from "./Screens/Account/Profile";
 import Article from "./Screens/Article/Article";
 import ArticleList from "./Screens/Article/ArticleList";
 import MemberProfile from "./Screens/MemberProfiles/MemberProfile";
 import MemberList from "./Screens/MemberProfiles/MemberList";
+import Post from "./Screens/Post/Post";
 import theme from "./theme.json";
 
 const styles = StyleSheet.create({
@@ -69,20 +71,36 @@ const memberProfileRoute = createStackNavigator(
   }
 );
 
+const postRoute = createStackNavigator(
+  {
+    Post: Post
+  },
+  {
+    initialRouteName: "Post",
+    defaultNavigationOptions: {
+      headerTitle: "Information Center",
+      headerStyle: styles.headerStyle,
+      headerTintColor: "white"
+    }
+  }
+);
+
 const MainAppRoute = createDrawerNavigator(
   {
     Profile: profileRoute,
     Article: articleRoute,
-    MemberProfiles: memberProfileRoute
+    MemberProfiles: memberProfileRoute,
+    InformationCenter: postRoute
   },
   {
-    initialRouteName: "Profile"
+    initialRouteName: "InformationCenter"
   }
 );
 
 const AuthRoute = createStackNavigator(
   {
-    Login: Login
+    Login: Login,
+    SignUp: SignUp
   },
   {
     initialRouteName: "Login",

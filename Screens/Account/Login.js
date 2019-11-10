@@ -41,6 +41,7 @@ export const Login = ({ navigation }) => {
                 title="New Here? Click here to Register"
                 type="clear"
                 raised={false}
+                onPress={() => navigation.navigate("SignUp")}
               />
             </View>
           </View>
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: "space-evenly",
-    alignItems: "center",
+    alignItems: "center"
   },
   imageView: {
     justifyContent: "center",

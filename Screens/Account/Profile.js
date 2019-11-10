@@ -18,6 +18,7 @@ const Profile = ({ navigation }) => {
                 <View style={{ alignItems: "center" }}>
                   <Avatar
                     rounded
+                    size="large"
                     source={{ uri: profile.picture }}
                     style={styles.profilePicture}
                   />
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   main: {
     justifyContent: "flex-start",
     flex: 1,
-    alignItems: "stretch",
+    alignItems: "stretch"
   },
   profilePicture: {
     height: 100,
