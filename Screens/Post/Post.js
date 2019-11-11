@@ -8,7 +8,7 @@ import {
   Dimensions,
   ScrollView
 } from "react-native";
-import { Button, ListItem, Avatar, Card } from "react-native-elements";
+import { Button, ListItem, Avatar, Card, Icon } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
 import PostContainer from "../../Containers/Post";

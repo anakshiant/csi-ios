@@ -6,9 +6,15 @@ import { withLayout } from "../../Components/withLayout";
 import SignUpContainer from "../../Containers/SignUp";
 
 export const SignUp = ({ navigation }) => {
+  const postSignupAction = () => {
+    alert(
+      "You have been successfully registered. Please wait for your account approval"
+    );
+    navigation.navigate("Login");
+  };
   return (
     <React.Fragment>
-      <SignUpContainer action={() => navigation.navigate("Login")}>
+      <SignUpContainer action={() => postSignupAction()}>
         {({
           email,
           setEmail,
@@ -36,7 +42,7 @@ export const SignUp = ({ navigation }) => {
                   onChangeText={setFirstName}
                 />
                 <TextInput
-                  placeholder="Email"
+                  placeholder="Last Name"
                   style={styles.textInput}
                   value={lastName}
                   onChangeText={setLastName}

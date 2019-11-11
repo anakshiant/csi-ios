@@ -5,7 +5,7 @@ import ThemeContext from "../Contexts/ThemeContext";
 import AuthContext from "../Contexts/AuthContext";
 
 export const withLayout = Component => {
-  return props => {
+  const comp = props => {
     const theme = useContext(ThemeContext);
     const auth = useContext(AuthContext);
     return (
@@ -14,4 +14,6 @@ export const withLayout = Component => {
       </AppLayout>
     );
   };
+
+  return comp;
 };
