@@ -1,3 +1,4 @@
+import React from "react";
 import {
   createSwitchNavigator,
   createAppContainer,
@@ -5,18 +6,21 @@ import {
 } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Button } from "react-native";
+import { Icon } from "react-native-elements";
 
 import { Splash } from "./Screens/Splash/Index";
 import Login from "./Screens/Account/Login";
 import SignUp from "./Screens/Account/SingnUp";
 import Profile from "./Screens/Account/Profile";
-import Article from "./Screens/Article/Article";
-import ArticleList from "./Screens/Article/ArticleList";
+import Article from "./Screens/InformationCenter/Article";
+import ArticleList from "./Screens/InformationCenter/ArticleList";
 import MemberProfile from "./Screens/MemberProfiles/MemberProfile";
 import MemberList from "./Screens/MemberProfiles/MemberList";
-import Post from "./Screens/Post/Post";
+import Post from "./Screens/Home";
+import Comments from "./Screens/Home/Comments";
 import theme from "./theme.json";
+import Emergency from "./Screens/Emergency";
 
 const styles = StyleSheet.create({
   headerStyle: {
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const articleRoute = createStackNavigator(
+const informationCenterRoute = createStackNavigator(
   {
     ArticleList: ArticleList,
     Article: Article
@@ -37,7 +41,14 @@ const articleRoute = createStackNavigator(
     defaultNavigationOptions: {
       headerTitle: "Article",
       headerStyle: styles.headerStyle,
-      headerTintColor: "white"
+      headerTintColor: "white",
+      headerRight: () => (
+        <Button
+          onPress={() => alert("This is a button!")}
+          title="Info"
+          color="#fff"
+        />
+      )
     }
   }
 );
@@ -71,14 +82,27 @@ const memberProfileRoute = createStackNavigator(
   }
 );
 
-const postRoute = createStackNavigator(
+const homeRoute = createStackNavigator(
   {
-    Post: Post
+    Post: Post,
+    Comments: Comments
   },
   {
     initialRouteName: "Post",
     defaultNavigationOptions: {
-      headerTitle: "Information Center",
+      headerTitle: "Home",
+      headerStyle: styles.headerStyle,
+      headerTintColor: "white"
+    }
+  }
+);
+
+const emergencyRoute = createStackNavigator(
+  { Emergency: Emergency },
+  {
+    initialRouteName: "Emergency",
+    defaultNavigationOptions: {
+      headerTitle: "Emergency",
       headerStyle: styles.headerStyle,
       headerTintColor: "white"
     }
@@ -87,13 +111,53 @@ const postRoute = createStackNavigator(
 
 const MainAppRoute = createDrawerNavigator(
   {
-    Profile: profileRoute,
-    Article: articleRoute,
-    MemberProfiles: memberProfileRoute,
-    InformationCenter: postRoute
+    Home: {
+      navigationOptions: {
+        drawerLabel: "Home",
+        drawerIcon: <Icon name="home" />
+      },
+      screen: homeRoute
+    },
+    Emergency: {
+      navigationOptions: {
+        drawerLabel: "Emergency",
+        drawerIcon: <Icon name="notifications" />
+      },
+      screen: emergencyRoute
+    },
+    MemberProfiles: {
+      navigationOptions: {
+        drawerLabel: "Member Profiles",
+        drawerIcon: <Icon name="person-add" />
+      },
+      screen: memberProfileRoute
+    },
+    InformationCenter: {
+      navigationOptions: {
+        drawerLabel: "Informationn Center",
+        drawerIcon: <Icon name="apps" />
+      },
+      screen: informationCenterRoute
+    },
+    Profile: {
+      navigationOptions: {
+        drawerLabel: "Profile",
+        drawerIcon: <Icon name="person" />
+      },
+      screen: Profile
+    }
   },
   {
-    initialRouteName: "InformationCenter"
+    initialRouteName: "Home",
+    navigationOptions: {
+      headerRight: () => (
+        <Button
+          onPress={() => alert("This is a button!")}
+          title="Info"
+          color="#fff"
+        />
+      )
+    }
   }
 );
 

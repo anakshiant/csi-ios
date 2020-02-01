@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { AsyncStorage } from "react-native";
-import { loginService } from "../services/account";
 
 const AuthContext = createContext({
   authenticated: false,

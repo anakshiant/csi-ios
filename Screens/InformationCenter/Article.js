@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  StyleSheet,
-  Image,
-  Dimensions
-} from "react-native";
-import { Button, ListItem, Avatar, Card } from "react-native-elements";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 import { withLayout } from "../../Components/withLayout";
-import config from "../../config";
 
 const Article = ({ navigation, theme }) => {
   const article = navigation.getParam("article");

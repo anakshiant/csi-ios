@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { getRecentUsers } from "../services/article";
-import config from "../config";
+import { getRecentUsers } from "../../services/article";
+import config from "../../config";
 
 export default ({ children }) => {
   const [members, setMembers] = useState([]);

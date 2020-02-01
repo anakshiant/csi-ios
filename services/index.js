@@ -10,7 +10,7 @@ export default client;
 export const normalizeResponse = async promise => {
   try {
     const response = await promise;
-    return JSON.parse(response.data.trim());
+    return response.data;
   } catch (exception) {
     throw exception;
   }

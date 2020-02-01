@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import AuthContext from "../Contexts/AuthContext";
-import config from "../config";
+import AuthContext from "../../Contexts/AuthContext";
+import config from "../../config";
 
 export default ({ children }) => {
   const [profile, setProfile] = useState(null);

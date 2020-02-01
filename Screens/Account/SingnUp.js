@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import { Input, Button, ThemeConsumer } from "react-native-elements";
+import React from "react";
+import { View, StyleSheet, Image, TextInput } from "react-native";
+import { Button } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import SignUpContainer from "../../Containers/SignUp";
+import SignUpContainer from "../../Containers/Account/SignUp";
 
 export const SignUp = ({ navigation }) => {
   const postSignupAction = () => {
@@ -25,9 +25,7 @@ export const SignUp = ({ navigation }) => {
           lastName,
           setFirstName,
           setLastName,
-          processing,
-          error
-        }) => {
+          processing        }) => {
           const buttonEnabled = email && password && firstName && lastName;
           return (
             <View style={styles.main}>

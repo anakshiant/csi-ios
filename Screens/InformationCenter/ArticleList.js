@@ -1,17 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  StyleSheet,
-  Image,
-  Dimensions
-} from "react-native";
-import { Button, ListItem, Avatar, Card } from "react-native-elements";
+import { View, ActivityIndicator } from "react-native";
+import { Button, Card } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import ArticleContainer from "../../Containers/Article";
-import config from "../../config";
+import ArticleContainer from "../../Containers/InformationCenter/Article";
 
 const ArticleCard = ({ article, onPress }) => (
   <Card

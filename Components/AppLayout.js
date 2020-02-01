@@ -14,11 +14,6 @@ const AppLayout = ({ children }) => {
 
   return (
     <View style={viewStyle.main}>
-      <StatusBar
-        translucent={true}
-        barStyle={"light-content"}
-        backgroundColor={PrimaryColor}
-      />
       {children}
     </View>
   );

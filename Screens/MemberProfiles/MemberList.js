@@ -1,23 +1,15 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   ActivityIndicator,
-  StyleSheet,
-  Image,
-  Dimensions
 } from "react-native";
 import {
-  Button,
   ListItem,
-  Avatar,
-  Card,
   SearchBar
 } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import MemberProfileContainer from "../../Containers/MemberProfile";
-import config from "../../config";
+import MemberProfileContainer from "../../Containers//MemberProfile/MemberProfile";
 
 const MemberList = ({ navigation, theme }) => {
   const [search, setSearch] = useState("");

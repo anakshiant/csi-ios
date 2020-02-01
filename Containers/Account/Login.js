@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { loginService } from "../services/account";
+import { loginService } from "../../services/account";
 
-import AuthContext from "../Contexts/AuthContext";
+import AuthContext from "../../Contexts/AuthContext";
 
 export default ({ children, action = () => {} }) => {
   const [email, setEmail] = useState("");

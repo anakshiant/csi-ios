@@ -1,7 +1,5 @@
-import React, { useState, useContext } from "react";
-import { signupService } from "../services/account";
-
-import AuthContext from "../Contexts/AuthContext";
+import { useState } from "react";
+import { signupService } from "../../services/account";
 
 export default ({ children, action = () => {} }) => {
   const [email, setEmail] = useState("");

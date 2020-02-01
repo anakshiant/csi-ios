@@ -2,15 +2,10 @@ import React from "react";
 import {
   View,
   Text,
-  ActivityIndicator,
-  StyleSheet,
-  Image,
-  Dimensions
 } from "react-native";
-import { Button, ListItem, Avatar, Card } from "react-native-elements";
+import { Button, ListItem, Avatar } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import config from "../../config";
 
 const MemberProfile = ({ navigation }) => {
   const member = navigation.getParam("member");

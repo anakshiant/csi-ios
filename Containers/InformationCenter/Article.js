@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { getArticles } from "../services/article";
-import config from "../config";
+import { getArticles } from "../../services/article";
+import config from "../../config";
 
 export default ({ children }) => {
   const [articles, setArticles] = useState([]);

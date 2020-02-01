@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, ActivityIndicator, StyleSheet, Image } from "react-native";
+import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { Button, ListItem, Avatar, Card } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import ProfileContainer from "../../Containers/Profile";
-import config from "../../config";
+import ProfileContainer from "../../Containers/Account/Profile";
 
-const Profile = ({ navigation }) => {
+const Profile = () => {
   return (
     <React.Fragment>
       <ProfileContainer>

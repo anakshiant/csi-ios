@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import { Input, Button, ThemeConsumer } from "react-native-elements";
+import React from "react";
+import { View, StyleSheet, Image, TextInput } from "react-native";
+import { Button } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
-import LoginContainer from "../../Containers/Login";
+import LoginContainer from "../../Containers/Account/Login";
 
 export const Login = ({ navigation }) => {
   return (
