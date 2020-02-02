@@ -4,6 +4,7 @@ import { Button, Card } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
 import ArticleContainer from "../../Containers/InformationCenter/Article";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ArticleCard = ({ article, onPress }) => (
   <Card
@@ -20,7 +21,7 @@ const ArticleList = ({ navigation }) => {
     <React.Fragment>
       <ArticleContainer>
         {({ processing, articles }) => (
-          <View>
+          <ScrollView>
             {processing && <ActivityIndicator size="large" />}
             {!processing && (
               <View style={{ padding: 10 }}>
@@ -37,7 +38,7 @@ const ArticleList = ({ navigation }) => {
                   ))}
               </View>
             )}
-          </View>
+          </ScrollView>
         )}
       </ArticleContainer>
     </React.Fragment>

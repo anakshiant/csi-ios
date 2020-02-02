@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import {
-  View,
-  ActivityIndicator,
-} from "react-native";
-import {
-  ListItem,
-  SearchBar
-} from "react-native-elements";
+import { View, ActivityIndicator } from "react-native";
+import { ListItem, SearchBar } from "react-native-elements";
 
 import { withLayout } from "../../Components/withLayout";
 import MemberProfileContainer from "../../Containers//MemberProfile/MemberProfile";
+import UserAvatar from "../../Components/UserAvatar";
 
 const MemberList = ({ navigation, theme }) => {
   const [search, setSearch] = useState("");
@@ -37,9 +32,7 @@ const MemberList = ({ navigation, theme }) => {
                     <ListItem
                       key={member.id}
                       title={`${member.first_name} ${member.last_name}`}
-                      leftAvatar={
-                        member.uri ? { source: { uri: member.picture } } : {}
-                      }
+                      leftAvatar={<UserAvatar userIcon={member.picture} />}
                       onPress={() =>
                         navigation.navigate("MemberProfile", { member })
                       }

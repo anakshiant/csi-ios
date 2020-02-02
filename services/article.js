@@ -12,6 +12,12 @@ export const getPosts = () => {
   return normalizeResponse(client.get("/getAllPosts"));
 };
 
+// export const addPost = () => {};
+
+export const deletePost = postId => {
+  return normalizeResponse(client.get("/deletePost", { params: { postId } }));
+};
+
 export const getComments = postId => {
   return normalizeResponse(
     client.get("/getCommentsOnPost", {
@@ -36,4 +42,8 @@ export const addComment = (postId, userId, comment) => {
   payload.append("userId", userId);
   payload.append("comment", comment);
   return normalizeResponse(client.post("/addComments", payload));
+};
+
+export const getEmergencyData = () => {
+  return normalizeResponse(client.get("/getEmergencyData"));
 };

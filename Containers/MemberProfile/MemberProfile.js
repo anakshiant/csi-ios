@@ -11,18 +11,11 @@ export default ({ children }) => {
     (async function() {
       const memberResponse = await getRecentUsers();
       if (memberResponse.status) {
-        memberResponse.data = memberResponse.data.map(putImageUrl);
         setMembers(memberResponse.data);
         setProcessing(false);
-        console.log(memberResponse.data);
       }
     })();
   }, []);
-
-  const putImageUrl = user => {
-    user.picture = user.picture ? `${config.imageBaseUrl}${user.picture}` : "";
-    return user;
-  };
 
   return children({ processing, members });
 };
