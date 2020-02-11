@@ -7,7 +7,7 @@ import {
 import ThemeContext from "../../Contexts/ThemeContext";
 import { withLayout } from "../../Components/withLayout";
 
-const ProjectApproval = ({ navigation }) => {
+const LogProjects = ({ navigation }) => {
   const { PrimaryColor } = useContext(ThemeContext);
 
   return (
@@ -25,4 +25,4 @@ const viewStyle = StyleSheet.create({
   }
 });
 
-export default withLayout(ProjectApproval);
+export default withLayout(LogProjects);

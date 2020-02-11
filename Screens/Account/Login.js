@@ -34,7 +34,11 @@ export const Login = ({ navigation }) => {
                 raised={true}
                 onPress={login}
               />
-              <Button title="Forgot Password?" type="clear" raised={false} />
+              <Button
+                title="Forgot Password?"
+                type="clear"
+                raised={false}
+              />
             </View>
             <View style={styles.signupView}>
               <Button
